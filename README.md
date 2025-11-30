@@ -2,7 +2,7 @@
 
 A repo to define and swap themes on arch+hyprland desktop.
 
-It defines themes, assigns wallpapers, and define a family mode.
+It defines themes, assigns wallpapers, and toggles a family mode.
 
 ## Installation
 

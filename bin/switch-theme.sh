@@ -6,6 +6,7 @@ set -euo pipefail
 THEMES_DIR="$HOME/.config/nyv-themes/themes"
 ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
 HYPRLAND_CONFIG_DIR="$HOME/.config/hypr"
+WAYBAR_CONFIG_DIR="$HOME/.config/waybar"
 
 # -- INPUT VALIDATION
 THEME="$1"
@@ -37,4 +38,14 @@ if [ -f "$THEMES_DIR/$THEME/hyprland-colors.conf" ]; then
     echo "- Hyprland colors SET."
 else
     echo "- Hyprland colors SKIPPED."
+fi
+
+# -- WAYBAR
+if [ -f "$THEMES_DIR/$THEME/waybar-config.jsonc" ]; then
+    mkdir -p "$ALACRITTY_CONFIG_DIR"
+    cp "$THEMES_DIR/$THEME/waybar-config.jsonc" "$WAYBAR_CONFIG_DIR/config.jsonc"
+    cp "$THEMES_DIR/$THEME/waybar-style.css" "$WAYBAR_CONFIG_DIR/style.css"
+    echo "- Waybar colors SET."
+else
+    echo "- Waybar colors SKIPPED."
 fi
