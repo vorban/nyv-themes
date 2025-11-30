@@ -5,6 +5,7 @@ set -euo pipefail
 # -- CONSTANTS
 THEMES_DIR="$HOME/.config/nyv-themes/themes"
 ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
+HYPRLAND_CONFIG_DIR="$HOME/.config/hypr"
 
 # -- INPUT VALIDATION
 THEME="$1"
@@ -23,7 +24,17 @@ fi
 if [ -f "$THEMES_DIR/$THEME/alacritty-colors.toml" ]; then
     mkdir -p "$ALACRITTY_CONFIG_DIR"
     cp "$THEMES_DIR/$THEME/alacritty-colors.toml" "$ALACRITTY_CONFIG_DIR/alacritty-colors.toml"
-    echo "Alacritty colors updated for theme '$THEME'."
+    echo "- Alacritty colors SET."
 else
-    echo "No Alacritty colors found in theme '$THEME'."
+    echo "- Alacritty colors SKIPPED."
+fi
+
+# -- HYPRLAND
+if [ -f "$THEMES_DIR/$THEME/hyprland-colors.conf" ]; then
+    mkdir -p "$ALACRITTY_CONFIG_DIR"
+    cp "$THEMES_DIR/$THEME/hyprland-colors.conf" "$HYPRLAND_CONFIG_DIR/hyprland-colors.conf"
+    hyprctl reload
+    echo "- Hyprland colors SET."
+else
+    echo "- Hyprland colors SKIPPED."
 fi

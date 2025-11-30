@@ -4,14 +4,24 @@ A repo to define and swap themes on arch+hyprland desktop.
 
 It defines themes, assigns wallpapers, and define a family mode.
 
-## Themes
+## Installation
 
-Themes are folders containing partial config files for themable programs.
+You need to add the following lines to your config files:
 
-## Wallpapers
+```conf
+# ~/.config/hypr/hyprland.conf
 
-Wallpapers are assigned per monitor per theme. Those are not bundled with the repo.
+source = ~/.config/hypr/hyprland-colors.conf
 
-## Family-mode
+```
 
-The family mode replaces wallpapers with a generated image from the color palette of the theme.
+```toml
+# ~/.config/alacritty/alacritty.toml
+
+[general]
+
+import = [
+    # ...
+    "~/.config/alacritty/alacritty-colors.toml"
+]
+```
