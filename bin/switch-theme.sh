@@ -7,6 +7,8 @@ THEMES_DIR="$HOME/.config/nyv-themes/themes"
 ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
 
 # -- INPUT VALIDATION
+THEME="$1"
+
 if [ -z "$THEME" ]; then
     echo "Usage: switch-theme <theme-name>"
     exit 1
@@ -17,13 +19,11 @@ if [ ! -d "$THEMES_DIR/$THEME" ]; then
     exit 1
 fi
 
-THEME="$1"
-
 # -- ALACRITTY
-if [ -f "$THEME_DIR/alacritty-colors.toml" ]; then
+if [ -f "$THEMES_DIR/$THEME/alacritty-colors.toml" ]; then
     mkdir -p "$ALACRITTY_CONFIG_DIR"
-    cp "$THEME_DIR/alacritty-colors.toml" "$ALACRITTY_CONFIG_DIR/alacritty-colors.toml"
-    echo "Alacritty colors updated for theme '$THEME_NAME'."
+    cp "$THEMES_DIR/$THEME/alacritty-colors.toml" "$ALACRITTY_CONFIG_DIR/alacritty-colors.toml"
+    echo "Alacritty colors updated for theme '$THEME'."
 else
-    echo "No Alacritty colors found in theme '$THEME_NAME'."
+    echo "No Alacritty colors found in theme '$THEME'."
 fi
