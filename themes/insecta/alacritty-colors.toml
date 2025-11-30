@@ -1,4 +1,8 @@
 [colors]
+[colors.primary]
+foreground="#d9cbae"
+background="#1a1417"
+
 [colors.normal]
 black="#1a1417"
 red="#af4b3b"
